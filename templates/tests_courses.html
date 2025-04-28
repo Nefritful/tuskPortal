@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Тестирование – Выбор курса{% endblock %}
+{% block content %}
+<h2>Выберите курс для прохождения тестирования</h2>
+<div class="courses-container">
+    {% for course in courses %}
+      <div class="course-item" onclick="location.href='{{ url_for('tests.start_tests', course_id=course.id) }}'">
+          <img src="{{ url_for('static', filename=course.logo) }}" alt="Логотип курса" class="course-logo">
+          <span class="course-title">{{ course.title }}</span>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}

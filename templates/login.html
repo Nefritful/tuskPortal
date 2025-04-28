@@ -1,0 +1,13 @@
+{% extends "base_auth.html" %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+<div class="login-container">
+    <h2>Вход в сервис</h2>
+    <form method="POST" action="{{ url_for('auth.login') }}">
+        <input type="text" name="username" placeholder="Имя пользователя" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a href="{{ url_for('auth.register') }}">Регистрация</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Тестирование: Вопрос {{ index + 1 }} из {{ total }}{% endblock %}
+{% block content %}
+<div class="test-container">
+    <h2>Вопрос {{ index + 1 }} из {{ total }}</h2>
+    <div class="test-question">
+        <!-- Выводим HTML-текст задания, используя |safe -->
+        {{ test.question_html|safe }}
+    </div>
+    {% if test.code_snippet %}
+    <div class="test-code">
+        <pre><code>{{ test.code_snippet|safe }}</code></pre>
+    </div>
+    {% endif %}
+    <div class="test-answer">
+        <label for="user_answer">Ответ:</label>
+        <input type="text" id="user_answer" name="user_answer" form="testForm">
+    </div>
+    <form id="testForm" action="" method="post">
+        <!-- При нажатии на Отправить форма отправляется на тот же URL для сохранения ответа -->
+        <button type="submit" name="btn" value="submit">Отправить</button>
+    </form>
+    <div class="test-navigation">
+        <button onclick="location.href='{{ url_for('tests.test_question', course_id=session.course_id, index=index-1) }}'" {% if index == 0 %}disabled{% endif %}>Назад</button>
+        <button onclick="location.href='{{ url_for('tests.test_question', course_id=session.course_id, index=index+1) }}'">Дальше</button>
+    </div>
+</div>
+{% endblock %}

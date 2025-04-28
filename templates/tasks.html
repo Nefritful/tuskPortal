@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Задания курса{% endblock %}
+{% block content %}
+<div class="tasks-container">
+    <h2>Задания курса</h2>
+    {% for task in tasks %}
+    <div class="task-item" onclick="location.href='{{ url_for('tasks.task_detail', task_id=task.id) }}'">
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+    </div>
+    {% else %}
+    <p>Задания отсутствуют.</p>
+    {% endfor %}
+</div>
+{% endblock %}

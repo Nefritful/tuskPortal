@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Мои курсы{% endblock %}
+{% block content %}
+<div class="courses-container">
+    <h2>Мои курсы</h2>
+    {% for course in courses %}
+    <div class="course-item" onclick="location.href='{{ url_for('tasks.tasks', course_id=course.id) }}'">
+        <img src="{{ url_for('static', filename=course.logo) if course.logo else url_for('static', filename='images/default_logo.png') }}" alt="Логотип курса" class="course-logo">
+        <span class="course-title">{{ course.title }}</span>
+    </div>
+    {% else %}
+    <p>У вас нет купленных курсов.</p>
+    {% endfor %}
+</div>
+{% endblock %}

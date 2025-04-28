@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Результаты тестирования{% endblock %}
+{% block content %}
+<div class="test-finished">
+    <h2>Тестирование завершено</h2>
+    <p>Вы ответили правильно на {{ correct }} из {{ total }} вопросов.</p>
+    <!-- Можно разместить кнопку для возврата на главную страницу или повторного прохождения -->
+    <button onclick="location.href='{{ url_for('tests.select_course') }}'">Вернуться к выбору курса</button>
+</div>
+
+<!-- Модальное окно для отображения результатов (опционально, можно реализовать с помощью JavaScript) -->
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('resultModal').style.display='none';">&times;</span>
+    <p>Вы ответили правильно на {{ correct }} из {{ total }} вопросов.</p>
+  </div>
+</div>
+<script>
+// Пример JavaScript для показа модального окна после завершения теста
+document.addEventListener('DOMContentLoaded', function(){
+    var modal = document.getElementById('resultModal');
+    modal.style.display = 'block';
+});
+</script>
+{% endblock %}

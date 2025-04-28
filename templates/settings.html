@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Настройки{% endblock %}
+{% block content %}
+<div class="settings-container">
+    <h2>Настройки</h2>
+    <form method="POST" action="{{ url_for('profile.settings') }}">
+        <div class="form-group">
+            <label for="username">Имя пользователя</label>
+            <input type="text" name="username" id="username" value="{{ user.username }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="{{ user.email }}" required>
+        </div>
+        <!-- Дополнительно можно добавить поля для изменения пароля -->
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+{% endblock %}

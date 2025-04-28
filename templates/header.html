@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="{{ url_for('home.home') }}">Главная</a>
+      <a href="{{ url_for('my_courses.my_courses') }}">Мои курсы</a>
+      <a href="{{ url_for('tests.select_course') }}">Тестирование</a>
+    </div>
+    <div class="nav-right">
+      <div class="dropdown">
+        <button class="dropbtn">{{ session.get('username', 'Меню') }}</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('profile.profile') }}">Профиль</a>
+          <a href="{{ url_for('profile.settings') }}">Настройки</a>
+          <a href="{{ url_for('auth.logout') }}">Выход</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
